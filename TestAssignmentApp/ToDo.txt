@@ -1,0 +1,27 @@
+﻿0. Using visual studio, run the provided solution and check the it runs. When you run it, a browser window will popup and you should see a generic page. When appending /api/customers, you should see XML results with a list of customer
+
+1. Setup a project structure where you have a html file with included angularjs and using twitter bootstrap
+1.1 Using any package manager for setting up packages is giving extra points
+1.2 Using require.js is giving extra points
+
+2. When writing your own javascript code, include the minified version of it on the page, not the actual version
+2.1 Using any task runner for this is giving extra points
+2.2 Making the process automatic (whenever a change in a file is made, the minifications takes place) is giving extra points
+
+3. Using angularjs, get the data from the Web API service (from step 0) and display it as a table on the screen
+3.1 Using an angular service provides extra points
+3.2 Making the table responsive provides extra points (when screen size is reduced, fewer columns are shown)
+
+4. Make all table columns sortable (e.g. by clicking on the column header for example)
+
+5. Make the content of the table searchable by adding a text field onto the page. As you type in the field, the table shall update and show only results. 
+5.1 The service supports oData protocol. Implementing a search using it, provides extra points
+5.2 Unify the Address, City, State and Zip data properties into one with format: 
+	Address,
+	Zip City,
+	State
+5.3 Making 5.2 with an angular filter gives extra points
+
+
+6. Implement pagination for the table (show 10 results per page and split the data info pages). Add previous and next buttons to the page for navigation and display which page number you are on and total number of pages. Disable buttons when you have reached the end of the data
+6.1 Implementing pagination using oData provides extra points

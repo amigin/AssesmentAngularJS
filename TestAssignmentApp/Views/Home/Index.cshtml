@@ -1,0 +1,86 @@
+﻿@{ Layout = "";}
+<!DOCTYPE html>
+<html ng-app="App">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Test</title>
+    @Styles.Render(BundleConfig.Css)
+    @Scripts.Render(BundleConfig.ScriptsBundle)
+    <script src="~/Scripts/angular.min.js"></script>
+    @Scripts.Render(BundleConfig.ScriptsAppJs)
+</head>
+<body>
+
+<div ng-controller="MainController as vm">
+    
+    <form ng-submit="vm.getData(searchPhrase)" style="width: 300px; margin: 5px;">
+        <div class="input-group">
+            <input type="text" ng-model="searchPhrase" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+                <input class="btn btn-default" type="submit" value="Request">
+            </span>
+        </div><!-- /input-group -->
+    </form>
+    <table class="table">
+        <tr>
+            <th ng-click="sortType ='firstName';sortReverse=!sortReverse" style="cursor: pointer">
+                First name
+            </th>
+            <th ng-click="sortType ='lastName';sortReverse=!sortReverse" style="cursor: pointer">
+                Last name
+            </th>
+            <th ng-click="sortType ='email';sortReverse=!sortReverse" style="cursor: pointer" class="hidden-xs hidden-sm">
+                Email
+            </th>
+            <th ng-click="sortType ='phone';sortReverse=!sortReverse" style="cursor: pointer" class="hidden-xs hidden-sm">
+                Phone
+            </th>
+            <th ng-click="sortType ='address';sortReverse=!sortReverse" style="cursor: pointer" class="hidden-xs hidden-sm">
+                Address
+            </th>
+            <th ng-click="sortType ='company';sortReverse=!sortReverse" style="cursor: pointer" class="hidden-xs hidden-sm">
+                Company
+            </th>
+        </tr>
+
+        <tbody>
+        <tr ng-repeat="itm in data | orderBy:sortType:sortReverse">
+            <td>{{itm.firstName}}</td>
+            <td>{{itm.lastName}}</td>
+            <td class="hidden-xs hidden-sm">{{itm.email}}</td>
+            <td class="hidden-xs hidden-sm">{{itm.phone}}</td>
+            <td class="hidden-md hidden-xs hidden-sm">{{itm.address}}, {{itm.zip}} {{itm.city}}, {{itm.state}}</td>
+
+            <td class="hidden-xs hidden-sm">{{itm.company}}</td>
+        </tr>
+        </tbody>
+
+    </table>
+
+    <div style="text-align: center">
+        <nav ng-show="showPagination">
+            <ul class="pagination"><li>
+                    <a href="#" aria-label="Previous" ng-click="vm.decPage()">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li ng-repeat="i in pages"  ng-class="i-1 == currentPage ? 'active' : ''">
+                    <a href="#" ng-click="vm.setPage(i-1)">{{i}}</a>
+                </li>
+                <li>
+                    <a href="#" aria-label="Next" ng-click="vm.incPage()">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+
+</body>
+
+</html>
